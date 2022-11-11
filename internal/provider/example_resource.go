@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -97,9 +98,8 @@ func (r *ExampleResource) Create(ctx context.Context, req resource.CreateRequest
 	//     return
 	// }
 
-	// For the purposes of this example code, hardcoding a response value to
-	// save into the Terraform state.
-	data.Id = types.StringValue("example-id")
+	// For the purposes of this example code, random UUID
+	data.Id = types.StringValue(uuid.New().String())
 
 	// Write logs using the tflog package
 	// Documentation: https://terraform.io/plugin/log
